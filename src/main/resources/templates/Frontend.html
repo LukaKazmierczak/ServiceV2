@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<h1>Speiseeiswahl</h1>
+<h2>Verfügbarkeit</h2>
+<form action="/Verfügbarkeitsprüfung" th:object="${bean}" method="POST">
+    <p>Verifying
+        <select th: field="*{selectedIce}{selectedTopping}">
+
+            <option th: each="n : ${bean.Eissorten}" th: value="${n}" th: text="${n}"/>
+
+        </select>
+        ist verfügbar<input type="submit">
+    <p/>
+
+
+    <form action="/Präsentation" th: object="${map}" method="GET">
+        <ul id="content">
+
+
+            <h3>Unser Sortiment</h3>
+
+            <ul>
+                <li>
+                <li>Unsere Eissorten</li>
+                <li>Unsere Toppings</li>
+                </li>
+            </ul>
+        </ul>
+        <select th: field="*{}"></select>
+
+
+        <form action="/Löschung" th: object="${map}" method="DELETE"></form>
+        Sie möchten
+        <input type="t" value="">
+        löschen?
+
+    </form>
+
+
+</form>
+
+<p th:text="${bean.result}"></p>
+</body>
+</html>
